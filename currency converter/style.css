@@ -1,0 +1,158 @@
+/* Reset + base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --card-bg:#fff;
+  --app-bg:#f4e4ba;
+  --border:#dcdcdc;
+  --primary:#af4d98;
+  --shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--app-bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  padding: 1rem;               /* prevents edge-to-edge on tiny screens */
+}
+
+.container {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  width: clamp(320px, 92vw, 420px);   /* keeps layout inside viewport */
+}
+
+h2 { text-align: center; }
+
+form { margin: 1.5rem 0 0.75rem; }
+
+form select,
+form button,
+form input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 0.75rem;
+}
+
+/* Amount */
+.amount input {
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  height: 3rem;
+  padding: 0 0.75rem;
+  background: #fff;
+}
+
+/* Currency row */
+.dropdown {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  min-width: 0; /* allow children to shrink properly */
+}
+
+.dropdown > .from,
+.dropdown > .to {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.dropdown p {
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.dropdown i {
+  align-self: flex-end;
+  font-size: 1.25rem;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s ease;
+}
+
+.dropdown i:hover { background: #f2f2f2; }
+
+/* Selects */
+.select-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: #fff;
+}
+
+.select-container img {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+
+.select-container select {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 1rem;
+  background: transparent;
+  padding: 0.4rem 0.1rem;
+  appearance: none;
+}
+
+/* Result text */
+.msg {
+  margin: 1.5rem 0;
+  min-height: 1.25rem;
+  text-align: center;
+  font-weight: 700;
+  word-break: break-word; /* avoid overflow on long numbers */
+}
+
+/* Button */
+form button {
+  height: 3rem;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: transform 0.06s ease, filter 0.15s ease;
+}
+
+form button:active { transform: scale(0.99); }
+form button:hover { filter: brightness(1.03); }
+
+/* Accessibility focus */
+input:focus,
+select:focus,
+button:focus {
+  outline: 2px solid color-mix(in srgb, var(--primary) 60%, white);
+  outline-offset: 2px;
+}
+
+/* Tiny screens: allow wrapping and keep icon centered */
+@media (max-width: 380px) {
+  .dropdown {
+    flex-wrap: wrap;
+  }
+  .dropdown i {
+    width: 100%;
+    text-align: center;
+    align-self: center;
+  }
+}
